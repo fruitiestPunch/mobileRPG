@@ -1,8 +1,14 @@
 extends Node
 
-#onready var hp_Label = $Enemy/HP_Label
 onready var enemy = $Enemy
+onready var textbox = $UI_Control/Textbox_Panel
+onready var sword_button = $UI_Control/Sword_Button
 
 func _on_Sword_Button_pressed():
-	enemy.hp += 3
-	#hp_Label.text = "15hp"
+	if(enemy != null):
+		enemy.hp -= 3
+
+func _on_Enemy_died():
+	enemy = null
+	sword_button.disabled = true
+	print("died")
