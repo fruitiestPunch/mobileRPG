@@ -17,3 +17,7 @@ func set_hp(new_hp):
 		animation_player.play("Shake_Animation")
 		yield(animation_player, "animation_finished")
 		animation_player.play("Attack_Animation")
+		yield(animation_player, "animation_finished")
+		var battle = get_tree().current_scene
+		var player_stats = battle.find_node("PlayerStats")
+		player_stats.current_hp -= 3

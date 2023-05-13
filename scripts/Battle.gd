@@ -2,7 +2,7 @@ extends Node
 
 onready var enemy = $Enemy
 onready var textbox = $UI_Control/Textbox_Panel
-onready var sword_button = $UI_Control/Sword_Button
+onready var sword_button = $UI_Control/UI_GridContainer/Sword_Button
 
 func _on_Sword_Button_pressed():
 	if(enemy != null):
