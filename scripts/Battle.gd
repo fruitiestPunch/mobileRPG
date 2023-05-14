@@ -2,13 +2,31 @@ extends Node
 
 onready var enemy = $Enemy
 onready var textbox = $UI_Control/Textbox_Panel
-onready var sword_button = $UI_Control/UI_GridContainer/Sword_Button
+onready var battle_action_buttons = $UI_Control/UI_GridContainer
+onready var player_stats = $PlayerStats
+
+func _ready():
+	start_player_turn()
+
+func start_enemy_turn():
+	battle_action_buttons.hide()
+	if(enemy != null):
+		enemy.attack(player_stats)
+		yield(enemy, "end_turn")
+	start_player_turn()
+
+func start_player_turn():
+	battle_action_buttons.show()
+	player_stats.current_ap = player_stats.max_ap
+	yield(player_stats, "end_turn")
+	start_enemy_turn()
 
 func _on_Sword_Button_pressed():
 	if(enemy != null):
-		enemy.hp -= 3
+		enemy.take_damage(3)
+		player_stats.current_ap -= 1
 
 func _on_Enemy_died():
 	enemy = null
-	sword_button.disabled = true
+	battle_action_buttons.hide()
 	print("died")
