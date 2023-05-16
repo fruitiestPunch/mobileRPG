@@ -3,9 +3,8 @@ extends "res://scripts/Action_Button.gd"
 const Slash_object = preload("res://scenes/Slash_Effect.tscn")
 
 func _on_Action_Button_pressed():
-	var main = get_tree().current_scene
-	var enemy = main.find_node("Enemy")
-	var player_stats = main.find_node("PlayerStats")
+	var enemy = Battle_Units.Enemy
+	var player_stats = Battle_Units.Player_Stats
 	if(enemy and player_stats):
 		player_stats.current_mp += 3
 		player_stats.current_ap -= 1
