@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/textures/Mobile RPG Mockup.png" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://scripts/Battle.gd" type="Script" id=4]
 [ext_resource path="res://scripts/PlayerStats.gd" type="Script" id=5]
 [ext_resource path="res://scripts/Stats_Panel.gd" type="Script" id=6]
+[ext_resource path="res://scenes/Sword_Action_Button.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Heal_Action_Button.tscn" type="PackedScene" id=8]
 
 [node name="Battle" type="Node"]
 script = ExtResource( 4 )
@@ -69,7 +71,7 @@ margin_right = 84.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 text = "MP
-10"
+25"
 align = 1
 
 [node name="Textbox_Panel" type="Panel" parent="UI_Control"]
@@ -87,33 +89,13 @@ custom_constants/vseparation = 3
 custom_constants/hseparation = 8
 columns = 2
 
-[node name="Sword_Button" type="Button" parent="UI_Control/UI_GridContainer"]
-margin_right = 32.0
-margin_bottom = 13.0
-rect_min_size = Vector2( 32, 13 )
-text = "SWORD"
+[node name="Sword_Action_Button" parent="UI_Control/UI_GridContainer" instance=ExtResource( 7 )]
 
-[node name="Button" type="Button" parent="UI_Control/UI_GridContainer"]
+[node name="Heal_Action_Button" parent="UI_Control/UI_GridContainer" instance=ExtResource( 8 )]
 margin_left = 40.0
 margin_right = 72.0
-margin_bottom = 13.0
-rect_min_size = Vector2( 32, 13 )
-
-[node name="Button2" type="Button" parent="UI_Control/UI_GridContainer"]
-margin_top = 16.0
-margin_right = 32.0
-margin_bottom = 29.0
-rect_min_size = Vector2( 32, 13 )
-
-[node name="Button3" type="Button" parent="UI_Control/UI_GridContainer"]
-margin_left = 40.0
-margin_top = 16.0
-margin_right = 72.0
-margin_bottom = 29.0
-rect_min_size = Vector2( 32, 13 )
 
 [connection signal="ap_changed" from="PlayerStats" to="UI_Control/Stats_Panel" method="_on_PlayerStats_ap_changed"]
 [connection signal="hp_changed" from="PlayerStats" to="UI_Control/Stats_Panel" method="_on_PlayerStats_hp_changed"]
 [connection signal="mp_changed" from="PlayerStats" to="UI_Control/Stats_Panel" method="_on_PlayerStats_mp_changed"]
 [connection signal="died" from="Enemy" to="." method="_on_Enemy_died"]
-[connection signal="pressed" from="UI_Control/UI_GridContainer/Sword_Button" to="." method="_on_Sword_Button_pressed"]

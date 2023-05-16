@@ -35,4 +35,3 @@ func is_dead():
 
 func deal_damage():
 	self.animation_target.current_hp -= attack_value
-	print("deal dmg")

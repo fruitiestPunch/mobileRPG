@@ -4,7 +4,7 @@ var max_hp = 25
 var current_hp = max_hp setget set_hp
 var max_ap = 3
 var current_ap = max_ap setget set_ap
-var max_mp = 10
+var max_mp = 25
 var current_mp = max_mp setget set_mp
 
 signal hp_changed(value)
