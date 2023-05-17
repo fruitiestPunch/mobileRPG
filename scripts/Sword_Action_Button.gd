@@ -3,6 +3,7 @@ extends "res://scripts/Action_Button.gd"
 const Slash_object = preload("res://scenes/Slash_Effect.tscn")
 
 func _on_Action_Button_pressed():
+	print('sword')
 	var enemy = Battle_Units.Enemy
 	var player_stats = Battle_Units.Player_Stats
 	if(enemy and player_stats):

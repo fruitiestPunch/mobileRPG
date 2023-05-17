@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/textures/Slime.png" type="Texture" id=2]
+
+[node name="Slime_Enemy" instance=ExtResource( 1 )]
+hp = 33
+attack_value = 5
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="HP_Label" parent="." index="1"]
+text = "50hp"
